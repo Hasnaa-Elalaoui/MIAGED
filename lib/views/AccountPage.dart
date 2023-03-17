@@ -33,9 +33,8 @@ class _AccountPageState extends State<AccountPage> {
       lastDate: DateTime.now(),
     );
     if (picked != null && picked != _selectedDate) {
-      String formattedDate = DateFormat('yyyy-MM-dd').format(picked);
-      print(
-          formattedDate); //formatted date output using intl package =>  2021-03-16
+      String formattedDate = DateFormat('yyyy-MM-dd').format(picked); //formatted date output using intl package =>  2021-03-16
+    
       setState(() {
         _selectedDate = picked;
         birthdateController.text = formattedDate;
@@ -95,7 +94,6 @@ class _AccountPageState extends State<AccountPage> {
         child: FutureBuilder(
             future: Firestore.getCurrentUser(),
             builder: (context, snapshot) {
-              print('data :' + snapshot.data.toString());
               if (snapshot.hasData) {
                 if (!loaded) {
                   updateControllers(snapshot.data!);
@@ -103,6 +101,7 @@ class _AccountPageState extends State<AccountPage> {
                 }
                 return Form(
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       TextFormField(

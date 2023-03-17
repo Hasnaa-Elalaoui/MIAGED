@@ -15,19 +15,17 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  var page = await Firestore.isLoggedIn() ? 'home' : 'login';
-  runApp(MyApp(page: 'login'));
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  String page;
-  MyApp({super.key, required this.page});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'MIAGED',
-      home: page == 'login' ? LoginPage() : MenuPage(),
+      home: LoginPage(),
     );
   }
 }
